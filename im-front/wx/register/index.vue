@@ -12,10 +12,10 @@
 					</view>
 				</view>
 				<view class="xw-login-form-item">
-					<view class="xw-login-form-label">验证码</view>
-					<input class="xw-login-form-input" placeholder="请填写验证码" v-model="code" name="code" type="text" />
-					<view class="wx-btn wx-btn-info" @click="getMsgCode()" v-if="!loading">获取验证码</view>
-					<view class="wx-btn wx-btn-info" v-else>{{time}}秒后重试</view>
+					<view class="xw-login-form-label">邀请码</view>
+					<input class="xw-login-form-input" placeholder="请填写邀请码" v-model="code" name="code" type="text" />
+<!--					<view class="wx-btn wx-btn-info" @click="getMsgCode()" v-if="!loading">获取验证码</view>-->
+<!--					<view class="wx-btn wx-btn-info" v-else>{{time}}秒后重试</view>-->
 				</view>
 				<view class="xw-login-form-item">
 					<view class="xw-login-form-label">密码</view>

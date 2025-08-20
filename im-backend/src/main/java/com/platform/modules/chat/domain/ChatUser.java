@@ -77,6 +77,12 @@ public class ChatUser extends BaseEntity {
      * 用户token
      */
     private String token;
+
+
+    private String inviteCode;
+
+
+    private Long inviteId;
     /**
      * 版本信息
      */

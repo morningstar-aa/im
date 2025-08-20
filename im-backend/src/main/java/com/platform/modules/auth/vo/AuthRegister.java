@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Data
-public class AuthVo01 {
+public class AuthRegister {
 
     /**
      * 手机号

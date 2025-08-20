@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class AuthVo02 {
+public class AuthLogin {
 
     /**
      * 手机号

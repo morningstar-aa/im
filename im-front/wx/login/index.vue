@@ -28,9 +28,9 @@
 					<view class="wx-btn wx-btn-info" @click="getMsgCode()" v-if="!loading">获取验证码</view>
 					<view class="wx-btn wx-btn-info" v-else>{{time}}秒后重试</view>
 				</view>
-				<text class="xw-login-form-code" v-if="logintype" @click="changeLogintype">使用密码登录</text>
-				<text class="xw-login-form-code" v-if="!logintype" @click="changeLogintype">使用短信验证码登录</text>
-				<view class="xw-login-form-code" @click="goForgetPass">忘记密码</view>
+<!--				<text class="xw-login-form-code" v-if="logintype" @click="changeLogintype">使用密码登录</text>-->
+<!--				<text class="xw-login-form-code" v-if="!logintype" @click="changeLogintype">使用短信验证码登录</text>-->
+<!--				<view class="xw-login-form-code" @click="goForgetPass">忘记密码</view>-->
 				<button class="wx-btn wx-btn-info xw-login-form-btn" form-type="submit">登录</button>
 				<view class="login-agree">
 					<view class="login-agree-checkd">
@@ -154,9 +154,10 @@
 							checkType: "required",
 							errorMsg: "请填写手机号码"
 						}, {
-							checkType: "phone",
+							checkType: "number",
 							errorMsg: "请填写正确的手机号码"
-						}]
+						}
+            ]
 					},
 					password: {
 						rules: [{

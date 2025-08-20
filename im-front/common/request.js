@@ -297,6 +297,6 @@ function downloadFile(con) {
 // 	}
 // });
 // 地址及配置
-http.setBaseUrl("https://im-api.q3z3.com"); //在线服务器
+http.setBaseUrl("http://127.0.0.1:8080"); //在线服务器
 // http.setBaseUrl("http://192.168.0.200:8080"); //离线服务器
 export default http

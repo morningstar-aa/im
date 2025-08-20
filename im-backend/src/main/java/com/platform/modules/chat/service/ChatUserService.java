@@ -2,7 +2,8 @@ package com.platform.modules.chat.service;
 
 import cn.hutool.core.lang.Dict;
 import com.platform.common.web.service.BaseService;
-import com.platform.modules.auth.vo.AuthVo01;
+import com.platform.modules.auth.vo.AuthRegister;
+
 import com.platform.modules.chat.domain.ChatUser;
 import com.platform.modules.chat.vo.MyVo09;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -18,7 +19,7 @@ public interface ChatUserService extends BaseService<ChatUser> {
     /**
      * 通过手机+密码注册
      */
-    void register(AuthVo01 authVo);
+    void register(AuthRegister authVo);
 
     /**
      * 通过手机号查询

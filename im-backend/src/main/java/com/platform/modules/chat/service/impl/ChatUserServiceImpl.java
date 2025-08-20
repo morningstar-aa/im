@@ -19,7 +19,8 @@ import com.platform.common.shiro.ShiroUtils;
 import com.platform.common.utils.ServletUtils;
 import com.platform.common.web.service.impl.BaseServiceImpl;
 import com.platform.modules.auth.service.TokenService;
-import com.platform.modules.auth.vo.AuthVo01;
+import com.platform.modules.auth.vo.AuthLogin;
+import com.platform.modules.auth.vo.AuthRegister;
 import com.platform.modules.chat.dao.ChatUserDao;
 import com.platform.modules.chat.domain.ChatUser;
 import com.platform.modules.chat.service.ChatUserService;
@@ -73,7 +74,7 @@ public class ChatUserServiceImpl extends BaseServiceImpl<ChatUser> implements Ch
     }
 
     @Override
-    public void register(AuthVo01 authVo) {
+    public void register(AuthRegister authVo) {
         String phone = authVo.getPhone();
         String password = authVo.getPassword();
         String nickName = authVo.getNickName();

@@ -10,8 +10,8 @@ import com.platform.common.version.ApiVersion;
 import com.platform.common.version.VersionEnum;
 import com.platform.common.web.controller.BaseController;
 import com.platform.common.web.domain.AjaxResult;
-import com.platform.modules.auth.vo.AuthVo01;
-import com.platform.modules.auth.vo.AuthVo02;
+import com.platform.modules.auth.vo.AuthLogin;
+import com.platform.modules.auth.vo.AuthRegister;
 import com.platform.modules.auth.vo.AuthVo03;
 import com.platform.modules.auth.vo.AuthVo04;
 import com.platform.modules.chat.domain.ChatUser;
@@ -42,30 +42,30 @@ public class AuthController extends BaseController {
     @Resource
     private SmsService smsService;
 
-    /**
-     * 发送验证码（登录/注册/忘记密码）
-     */
-    @IgnoreAuth
-    @ApiVersion(VersionEnum.V1_0_0)
-    @PostMapping(value = "/sendCode")
-    @SubmitRepeat
-    public AjaxResult sendCode(@Validated @RequestBody SmsVo smsVo) {
-        ChatUser chatUser = chatUserService.queryByPhone(smsVo.getPhone());
-        switch (smsVo.getType()) {
-            case LOGIN:
-            case FORGET:
-                if (chatUser == null) {
-                    throw new BaseException("用户未注册，请先注册");
-                }
-                break;
-            case REGISTERED:
-                if (chatUser != null) {
-                    throw new BaseException("用户已注册，请直接登录");
-                }
-                break;
-        }
-        return AjaxResult.success(smsService.sendSms(smsVo)).put("msg", "验证码已发送");
-    }
+//    /**
+//     * 发送验证码（登录/注册/忘记密码）
+//     */
+//    @IgnoreAuth
+//    @ApiVersion(VersionEnum.V1_0_0)
+//    @PostMapping(value = "/sendCode")
+//    @SubmitRepeat
+//    public AjaxResult sendCode(@Validated @RequestBody SmsVo smsVo) {
+//        ChatUser chatUser = chatUserService.queryByPhone(smsVo.getPhone());
+//        switch (smsVo.getType()) {
+//            case LOGIN:
+//            case FORGET:
+//                if (chatUser == null) {
+//                    throw new BaseException("用户未注册，请先注册");
+//                }
+//                break;
+//            case REGISTERED:
+//                if (chatUser != null) {
+//                    throw new BaseException("用户已注册，请直接登录");
+//                }
+//                break;
+//        }
+//        return AjaxResult.success(smsService.sendSms(smsVo)).put("msg", "验证码已发送");
+//    }
 
     /**
      * 注册方法
@@ -73,7 +73,7 @@ public class AuthController extends BaseController {
     @IgnoreAuth
     @ApiVersion(VersionEnum.V1_0_0)
     @PostMapping(value = "/register")
-    public AjaxResult register(@Validated @RequestBody AuthVo01 authVo) {
+    public AjaxResult register(@Validated @RequestBody AuthRegister authVo) {
         // 验证
         smsService.verifySms(authVo.getPhone(), authVo.getCode(), SmsTypeEnum.REGISTERED);
         // 注册
@@ -87,7 +87,7 @@ public class AuthController extends BaseController {
     @IgnoreAuth
     @ApiVersion(VersionEnum.V1_0_0)
     @PostMapping("/login")
-    public AjaxResult login(@Validated @RequestBody AuthVo02 authVo) {
+    public AjaxResult login(@Validated @RequestBody AuthLogin authVo) {
         // 执行登录
         ShiroLoginAuth loginAuth = new ShiroLoginAuth(authVo.getPhone(), authVo.getPassword());
         Dict dict = chatUserService.doLogin(loginAuth);

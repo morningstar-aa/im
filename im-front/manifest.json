@@ -35,7 +35,8 @@
             "VideoPlayer" : {},
             "iBeacon" : {},
             "Barcode" : {},
-            "Camera" : {}
+            "Camera" : {},
+            "Contacts" : {}
         },
         /* 模块配置 */
         "distribute" : {
@@ -227,5 +228,6 @@
         "uniStatistics" : {
             "enable" : true
         }
-    }
+    },
+    "locale" : "en"
 }
